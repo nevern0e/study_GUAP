@@ -1,1 +1,28 @@
+message = '''Выберите операцию: 
++ : Сложение;
+- : Вычетание;
+* : Умножение;
+/ : Деление;
+** : Возведение в степень;
+// : Определение корня из числа
+Ваш выбор:
+'''
+operation = input(message)
+a = 5.11
+b = 2.99
+if (operation == '+'):
+    print(a+b)
+elif (operation =='-'):
+    print(a-b)
+elif (operation =='*'):
+    print(a*b)
+elif (operation =='/'):
+    print(a/b)
+elif (operation =='**'):
+    print(a**b)
+elif (operation =='//'):
+    print(a//b)
+else:
+    print("неизвестная операция")
+
 
