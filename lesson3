@@ -1,0 +1,31 @@
+ans = ''
+
+while (ans != "no"):
+    a = int(input("Первая переменная: "))
+    b = int(input("Вторая переменная: "))
+    oper = input("Введите символ: ")
+    if (oper == '+'):
+        print(a+b)
+    elif (oper =='-'):
+        print(a-b)
+    elif (oper =='*'):
+        print(a*b)
+    elif (oper =='/'):
+        print(a/b)
+    elif (oper =='**'):
+        print(a**b)
+    elif (oper =='//'):
+        print(a//b)
+    elif (oper == "<"):
+        print (a<b)
+    elif (oper == ">"):
+        print (a>b)
+    elif (oper == ">="):
+        print (a>=b)
+    elif (oper == "<="):
+        print (a<=b)
+    elif (oper == "=="):
+        print (a==b)
+    else:
+        print ("Знак не опознан, повторите попытку")
+    ans = input("Хотите сдклать новый расчёт? Введите yes или no: ")
