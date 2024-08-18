@@ -1,0 +1,23 @@
+x = ()
+y = ()
+n = int(input ("Введите количество проверок: "))
+if n <= 0:
+    print ("Ошибка ввода.")
+else:
+    for i in range(n):
+        x = float(input ("Введите значение для x: "))
+        y = float(input ("Введите значение для y: "))
+        if x > 0 and y > 0:
+            print(float(x),float(y),"Точка в 1 четверти",sep=";")
+        elif x < 0 and y > 0:
+            print(float(x),float(y),"Точка во 2 четверти",sep=";")
+        elif x < 0 and y < 0:
+            print(float(x),float(y),"Точка в 3 четверти",sep=";")
+        elif x > 0 and y < 0:
+            print(float(x),float(y),"Точка в 4 четверти",sep=";")
+        elif x == 0 and y == 0:
+            print(int(x),int(y),"Точка в центре координат",sep=";")
+        elif x == 0:
+            print(int(x),int(y),"Точка на оси x",sep=";")
+        elif y == 0:
+            print(int(x),int(y),"Точка на оси y",sep=";")
