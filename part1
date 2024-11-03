@@ -1,0 +1,58 @@
+from tkinter import *
+from tkinter import font
+import pandas as pd
+import math
+
+# создаем пользовательскую форму для ввода данных
+root = Tk()
+root.title("Определение допустимой ценовой категории - 1, 3, 4:") 
+root.geometry('600x250')
+commonFont1 = font.Font(root,family = "Verdana", size = 12, weight="normal")
+
+lab1 = Label(root, text = "Введите значение макс мощности ЭО", width = 60, height = 2, justify="center", background="gray", fg = "white", font=commonFont1)
+lab1.grid(row=0, column=0)
+lab2 = Label(root, text = "Введите уровень напряжения на ЭО", width = 60, height = 2, justify="center", background="gray", fg = "white", font=commonFont1)
+lab2.grid(row=1, column=0)
+lab3 = Label(root, text = "ЭО присоединен к сетям ФСК?", width = 60, height = 2, justify="center", background="gray", fg = "white", font=commonFont1)
+lab3.grid(row=2, column=0)
+lab4 = Label(root, text = "Приборы учета на объекте позволяют фиксировать почасовые данные?", width = 60, height = 2, justify="center", background="gray", fg = "white", font=commonFont1)
+lab4.grid(row=3, column=0)
+ent1 = Entry(root, width = 10, justify="center", background="#00BFFF", fg = "black", font=commonFont1)
+ent1.grid(row=0, column=1)
+ent2 = Entry(root, width = 10, justify="center", background="#00BFFF", fg = "black", font=commonFont1)
+ent2.grid(row=1, column=1)
+ent3 = Entry(root, width = 10, justify="center", background="#00BFFF", fg = "black", font=commonFont1)
+ent3.grid(row=2, column=1)
+ent4 = Entry(root, width = 10, justify="center", background="#00BFFF", fg = "black", font=commonFont1)
+ent4.grid(row=3, column=1)
+
+but1 = Button(root, text = "Определить допустимую ценовую категорию для ЭО", background="#7CFC00", fg = "black", font=commonFont1)
+but1.grid(row=4, column=0)
+lab5 = Label(root, bg="#FF7F50",fg="black", font=commonFont1)
+lab5.grid(row=5, column=0)
+
+# формулируем алгоритм для анализа введенных данных
+def analys(event):
+    n1 = float(ent1.get())
+    n2 = str(ent2.get())
+    n3 = str(ent3.get())
+    n4 = str(ent4.get())
+    
+    if (n1 <= 0):
+        lab5["text"] = str ("Максимальная мощность \n не может быть меньше или равна 0") # мощность энергообъекта не может быть нулевой или отрицательной
+    elif ((n2 == "гн") or (n3 == "да") and (n1 > 0) and (n4 == "да" or "нет")):
+        lab5["text"] = str ("Вам доступна только 4 ценовая категория") # по закону потребители на уровне ГН и/или присоединенные от сетей ФСК могут выбирать только 4 ЦК 
+    elif ((n1 < 670) and (n4 == "да")):
+        lab5["text"] = str ("Вам доступная любая ценовая категория: \n 1, 3, 4") # потребители менее 670 кВт могут выбирать любую ЦК
+    elif ((n1 < 670) and (n4 == "нет")):
+        lab5["text"] = str ("Сейчас Вам доступная 1 ценовая категория \n Для возможности выбора 3 или 4 ценовой категорий \n Вам потребуется произвести замену ПУ") 
+    elif ((n1 >= 670) and (n4 == "да")):
+        lab5["text"] = str ("Вам доступна 3 или 4 ценовая категория \n Для определения какая именно потребуется почасовой профиль") # выбор ЦК между 3 и 4 зависит от объема ЭЭ и мощности для оплаты услуг по передаче
+    elif ((n1 >= 670) and (n4 == "нет")):
+        lab5["text"] = str ("Вам доступна 3 или 4 ценовая категория \n Для начала расчетов Вам потребуется произвести замену ПУ")
+    else:
+        lab5["text"] = str ("Введены недопустимые параметры")
+
+but1.bind('<Button-1>', analys) 
+
+root.mainloop()
