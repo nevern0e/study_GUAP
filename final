@@ -100,7 +100,7 @@ def vivod():
 # создаем пользовательскую форму для ввода данных
 root = Tk()
 root.title("Определение допустимой ценовой категории - 1, 3, 4:") 
-root.geometry('600x350')
+root.geometry('600x400')
 commonFont1 = font.Font(root,family = "Verdana", size = 12, weight="normal")
 
 lab1 = Label(root, text = "Введите значение макс мощности ЭО", width = 60, height = 2, justify="center", background="gray", fg = "white", font=commonFont1)
