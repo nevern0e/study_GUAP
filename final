@@ -29,3 +29,40 @@ lab5.grid(row=5, column=0)
 root.geometry("600x250")
 
 root.mainloop()
+
+
+from tkinter import *
+from tkinter import font
+import pandas as pd
+
+# root = Tk()
+# root.title("Определение наиболее выгодной ценовой категории (3 или 4)") 
+# root.geometry('600x250')
+# commonFont1 = font.Font(root,family = "Verdana", size = 12, weight="normal")
+
+# lab6 = Label (root, text = "Расчетный период", width = 30, height = 2, justify="center", background="gray", fg = "white", font=commonFont1)
+# lab6.grid(row=0, column=0)
+# ent5 = Entry(root, width = 10, justify="center", background="#00BFFF", fg = "black", font=commonFont1)
+# ent5.grid(row=0, column=1)
+# lab7 = Label (root, text = "Значения из почасового профиля", width = 30, height = 2, justify="center", background="gray", fg = "white", font=commonFont1)
+# lab7.grid(row=1, column=0)
+# but2 = Button(root, text = "Определить значения из профиля", background="#7CFC00", fg = "black", font=commonFont1)
+# but2.grid(row=1, column=1)
+# lab8 = Label (root, text = "Объем электроэнергии", width = 30, height = 2, justify="center", background="gray", fg = "white", font=commonFont1)
+# lab8.grid(row=2, column=0)
+# ent6 = Entry(root, width = 10, justify="center", background="#FFDAB9", fg = "black", font=commonFont1)
+# ent6.grid(row=2, column=1)
+# lab9 = Label (root, text = "Объем мощности", width = 30, height = 2, justify="center", background="gray", fg = "white", font=commonFont1)
+# lab9.grid(row=3, column=0)
+# ent7 = Entry(root, width = 10, justify="center", background="#FFDAB9", fg = "black", font=commonFont1)
+# ent7.grid(row=3, column=1)
+
+# but3 = Button(root, text = "Определить выгодную ценовую категорию", background="#7CFC00", fg = "black", font=commonFont1)
+# but3.grid(row=4, column=0)
+# lab10 = Label(root, bg="#FF7F50",fg="black", font=commonFont1)
+# lab10.grid(row=5, column=0)
+
+# def vivod(event):
+
+
+# root.mainloop()
