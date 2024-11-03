@@ -1,1 +1,100 @@
+from tkinter import *
+from tkinter import font
+import pandas as pd
+import math as m
 
+# создаем форму для пользователя
+root = Tk()
+root.title("Определение наиболее выгодной ценовой категории (3 или 4)") 
+root.geometry('600x250')
+commonFont1 = font.Font(root,family = "Verdana", size = 12, weight="normal")
+
+lab6 = Label (root, text = "Уровень напряжения", width = 30, height = 2, justify="center", background="gray", fg = "white", font=commonFont1)
+lab6.grid(row=0, column=0)
+ent5 = Entry(root, width = 10, justify="center", background="#00BFFF", fg = "#000000", font=commonFont1)
+ent5.grid(row=0, column=1)
+lab7 = Label (root, text = "Значения из почасового профиля", width = 30, height = 1, justify="center", background="#4169E1", fg = "#000000", font=commonFont1)
+lab7.grid(row=1, column=0)
+lab8 = Label (root, text = "Объем электроэнергии", width = 30, height = 2, justify="center", background="gray", fg = "white", font=commonFont1)
+lab8.grid(row=2, column=0)
+ent6 = Entry(root, width = 10, justify="center", background="#FFDAB9", fg = "#000000", font=commonFont1)
+ent6.grid(row=2, column=1)
+lab9 = Label (root, text = "Объем мощности", width = 30, height = 2, justify="center", background="gray", fg = "white", font=commonFont1)
+lab9.grid(row=3, column=0)
+ent7 = Entry(root, width = 10, justify="center", background="#FFDAB9", fg = "#000000", font=commonFont1)
+ent7.grid(row=3, column=1)
+
+but3 = Button(root, text = "Определить выгодную ценовую категорию", background="#7CFC00", fg = "#000000", font=commonFont1)
+but3.grid(row=4, column=0)
+lab11 = Label(root, bg="#FF7F50",fg="black", font=commonFont1)
+lab11.grid(row=5, column=0)
+
+
+def vivod(event):
+    price_el_3 = ()
+    price_el_4 =()
+    price_power = ()
+    s3 =()
+    s4 =()
+
+    h1 = str(ent5.get())
+    h2 = float(ent6.get())
+    h3 = float(ent7.get())
+
+    elect = {
+    'Уровень': ['вн', 'сн1', 'сн2', 'нн'],
+    '3ЦК': ['1.59716', '3.00490', '3.69546', '4.24835'],
+    '4ЦК': ['0.07045', '0.15155', '0.35048', '0.69944']}
+    df1 = pd.DataFrame(elect)
+    power = {
+    'Уровень': ['вн', 'сн1', 'сн2', 'нн'],
+    '4ЦК': ['952.20783', '1513.59357', '1726.15567', '1275.80812']}
+    df2 = pd.DataFrame(power)
+
+    if (h1 == 'вн'):
+        price_el_3 = float(elect['3ЦК'][0])
+        s3 = h2 * price_el_3
+        price_el_4 = float(elect['4ЦК'][0])
+        price_power = float (power["4ЦК"][0])
+        s4 = (h2 * price_el_4) + (h3 * price_power)
+        if (s3>s4):
+            lab11 ["text"] = str ("Для вас выгодна 4 ценовая категория")
+        else:
+            lab11 ["text"] = str ("Для вас выгодна 3 ценовая категория")   
+    elif (h1 == 'сн1'):
+        price_el_3 = float(elect['3ЦК'][1])
+        s3 = h2 * price_el_3
+        price_el_4 = float(elect['4ЦК'][1])
+        price_power = float (power["4ЦК"][1])
+        s4 = (h2 * price_el_4) + (h3 * price_power)
+        if (s3>s4):
+            lab11 ["text"] = str ("Для вас выгодна 4 ценовая категория")
+        else:
+            lab11 ["text"] = str ("Для вас выгодна 3 ценовая категория")   
+    elif (h1 == 'сн2'):
+        price_el_3 = float(elect['3ЦК'][2])
+        s3 = h2 * price_el_3
+        price_el_4 = float(elect['4ЦК'][2])
+        price_power = float (power["4ЦК"][2])
+        s4 = (h2 * price_el_4) + (h3 * price_power)
+        if (s3>s4):
+            lab11 ["text"] = str ("Для вас выгодна 4 ценовая категория")
+        else:
+            lab11 ["text"] = str ("Для вас выгодна 3 ценовая категория")   
+    elif (h1 == 'нн'):
+        price_el_3 = float(elect['3ЦК'][3])
+        s3 = h2 * price_el_3
+        price_el_4 = float(elect['4ЦК'][3])
+        price_power = float (power["4ЦК"][3])
+        s4 = (h2 * price_el_4) + (h3 * price_power)
+        if (s3>s4):
+            lab11 ["text"] = str ("Для вас выгодна 4 ценовая категория")
+        else:
+            lab11 ["text"] = str ("Для вас выгодна 3 ценовая категория")   
+    else:
+        lab11 ["text"] = str ("Заполните данные для анализа")
+
+
+but3.bind('<Button-1>', vivod) 
+
+root.mainloop()
